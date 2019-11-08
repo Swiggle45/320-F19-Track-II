@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      page: 'Home'
+      page: ''
     };
   }
 
@@ -32,6 +32,7 @@ class App extends React.Component {
           <button onClick={() => this.setState({page: 'Gallery'})}>Gallery</button>
           <button onClick={() => this.setState({page: 'Login'})}>Login</button>
         </div>
+        <br></br>
         <div className='body'>
           {page}
         </div>
