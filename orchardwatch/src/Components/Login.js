@@ -50,9 +50,7 @@ class Login extends React.Component {
   }
 
   validate = e => {
-    const form = e.currentTarget;
-    if (form.checkValidity()){
-        this.setState({ validated: true });
+    if (e.currentTarget.checkValidity()){
         // send to Lambdas and wait for authToken upon successful validation or ...
         // wrong password
     }
