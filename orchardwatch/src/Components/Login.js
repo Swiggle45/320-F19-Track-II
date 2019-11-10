@@ -50,9 +50,11 @@ class Login extends React.Component {
   }
 
   validate = e => {
-    if (e.currentTarget.checkValidity()){
-        // send to Lambdas and wait for authToken upon successful validation or ...
+    if (e.currentTarget.checkValidity() && true){
+        // replace true with check when sending to Lambdas and wait for authToken upon successful validation or ...
+        // receives boolean based on successful validation, type of user, and authToken if boolean == true
         // wrong password
+        this.props.auth('grower', 'Authorized');
     }
     else {
       e.preventDefault();
