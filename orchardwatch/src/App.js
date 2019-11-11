@@ -46,7 +46,7 @@ class App extends React.Component {
           <button onClick={() => this.setState({ page: "AskAI" })}>
             Ask AI
           </button>
-          <button onClick={() => {this.setState({user: 'public', authToken: null})}}>Logout</button>
+          <button onClick={() => {this.setState({ page: "Home", user: 'public', authToken: null})}}>Logout</button>
         </div>
       );
     } else {
@@ -63,7 +63,6 @@ class App extends React.Component {
           <button onClick={() => this.setState({ page: "Gallery" })}>
             Gallery
           </button>
-          {/* login, observations, and askai should be based on user */}
           <button onClick={() => this.setState({ page: "Login" })}>
             Login
           </button>
