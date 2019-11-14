@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row, Button, Form } from "react-bootstrap";
+import { Timeline } from "react-twitter-widgets";
 
 class AboutUs extends React.Component {
   constructor() {
@@ -18,7 +19,21 @@ class AboutUs extends React.Component {
   }
 
   render() {
-    var tweets = <p>This is where the Tweets go!</p>;
+    //var tweets = <p>This is where the Tweets go!</p>;
+    let tweets = (
+      <Timeline
+        dataSource={{
+          sourceType: "profile",
+          screenName: "iamdevloper"
+        }}
+        options={{
+          username: "iamdevloper",
+          height: "400",
+          width: "200"
+        }}
+        onLoad={() => console.log("twitter timeline loaded!")}
+      />
+    );
     if (this.props.user === "researcher") {
       var edit = (
         <div>
@@ -86,7 +101,7 @@ class AboutUs extends React.Component {
     }
   }
 
-  updateDescription(event){
+  updateDescription(event) {
     // send to lambdas
     console.log(document.getElementById("editDescription").value);
   }
