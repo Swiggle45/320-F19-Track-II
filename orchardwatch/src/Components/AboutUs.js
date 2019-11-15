@@ -13,7 +13,7 @@ class AboutUs extends React.Component {
   componentWillMount() {
     this.setState({
       description:
-        "OrchardWatch, defender of apples, slayer of applescap, your friendly neighborhood hero!"
+        "OrchardWatch, defender of apples, slayer of applescab, your friendly neighborhood hero!"
     });
   }
 
