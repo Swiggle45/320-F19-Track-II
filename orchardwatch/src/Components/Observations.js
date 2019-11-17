@@ -1,59 +1,118 @@
 import React from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  Button,
+  Accordion,
+  Card,
+  Alert
+} from "react-bootstrap";
 
 class Observations extends React.Component {
   constructor() {
     super();
     this.state = {
-      postObservations: true
+      postObservations: true,
+      alert: false
     };
   }
 
   render() {
-    var observations;
-    if (this.state.postObservations) {
+    var alert = <div></div>;
+    if (this.state.alert) {
+      alert = (
+        <Alert
+          variant="success"
+          onClose={() => {
+            this.setState({ alert: false });
+          }}
+          dismissible
+        >
+          Observation Submitted
+        </Alert>
+      );
+    }
+    var observations = (
+      <div>
+        {alert}
+        <Row>
+          <Col md="2" />
+          <Col>
+            <Form onSubmit={this.submitObservation}>
+              <Form.Group>
+                <Form.Group controlId="ObservationTitle">
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Observation Title"
+                  />
+                </Form.Group>
+              </Form.Group>
+              <Form.Group>
+                <Form.Group controlId="ObservationDescription">
+                  <Form.Control
+                    required
+                    as="textarea"
+                    rows="10"
+                    placeholder="Observation Description/Comments"
+                  />
+                </Form.Group>
+              </Form.Group>
+              <Button onClick={() => {}} block>
+                Upload Images
+              </Button>
+              <br></br>
+              <br></br>
+              <Button type="submit" block>
+                Submit Observations
+              </Button>
+            </Form>
+          </Col>
+          <Col md="2" />
+        </Row>
+      </div>
+    );
+    if (!this.state.postObservations) {
+      let exObservation = {
+        observations: [
+          { title: "Some Observation", description: "Some Description" },
+          { title: "Another Observation", description: "Another Description" },
+          {
+            title: "Yet Another Observation",
+            description: "Yet Another Description"
+          }
+        ]
+      };
+      let list = exObservation.observations.map((e, index) => {
+        return (
+          <Card key={index}>
+            <Card.Header>
+              <Accordion.Toggle as={Button} variant="link" eventKey={index}>
+                {e.title}
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey={index}>
+              <Card.Body>{e.description}</Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        );
+      });
       observations = (
         <div>
-          <Row>
-            <Col md="2" />
-            <Col>
-              <Form>
-                <Form.Group>
-                  <Form.Group controlId="ObservationTitle">
-                    <Form.Control
-                      required
-                      type="text"
-                      placeholder="Observation Title"
-                    />
-                  </Form.Group>
-                </Form.Group>
-                <Form.Group>
-                  <Form.Group controlId="Observation Description">
-                    <Form.Control
-                      required
-                      as="textarea"
-                      rows="5"
-                      placeholder="Observation Description/Comments"
-                    />
-                  </Form.Group>
-                </Form.Group>
-                <Button onClick={() => {}} block>Upload Images</Button>
-                <br></br>
-                <br></br>
-                <Button onClick={() => {}} block>Submit Observations</Button>
-              </Form>
-            </Col>
-            <Col md="2" />
-          </Row>
+          <Accordion>{list}</Accordion>
         </div>
       );
     }
-    else {
-        observations = <div>
-            {/* pull observations from Lambdas */}
-        </div>
-    }
-    var switchViews;
+    var switchViews = (
+      <Button
+        onClick={() => {
+          this.setState({ postObservations: true });
+        }}
+      >
+        Post Observations
+      </Button>
+    );
     if (this.state.postObservations) {
       switchViews = (
         <Button
@@ -62,16 +121,6 @@ class Observations extends React.Component {
           }}
         >
           View Observations
-        </Button>
-      );
-    } else {
-      switchViews = (
-        <Button
-          onClick={() => {
-            this.setState({ postObservations: true });
-          }}
-        >
-          Post Observations
         </Button>
       );
     }
@@ -88,6 +137,15 @@ class Observations extends React.Component {
       return <div>{observations}</div>;
     }
   }
+
+  submitObservation = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    let title = document.getElementById("ObservationTitle").value;
+    let description = document.getElementById("ObservationDescription").value;
+    console.log(title, description);
+    this.setState({ alert: true });
+  };
 }
 
 export default Observations;

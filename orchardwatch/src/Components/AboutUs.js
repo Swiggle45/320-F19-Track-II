@@ -11,7 +11,8 @@ class AboutUs extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    // fetch description from Lambdas
     this.setState({
       description:
         "OrchardWatch, defender of apples, slayer of applescab, your friendly neighborhood hero!"
@@ -19,7 +20,14 @@ class AboutUs extends React.Component {
   }
 
   render() {
-    //var tweets = <p>This is where the Tweets go!</p>;
+    let description = this.state.description.split("\n").map((line, key) => {
+      return (
+        <span key={key}>
+          {line}
+          <br />
+        </span>
+      );
+    });
     let tweets = (
       <Timeline
         dataSource={{
@@ -46,14 +54,14 @@ class AboutUs extends React.Component {
           </Button>
           <br></br>
           <br></br>
-          {this.state.description}
+          {description}
         </div>
       );
-      if (this.state.editting)
+      if (this.state.editting) {
         edit = (
           <div>
             <Row>
-              <Col></Col>
+              <Col md="1" />
               <Col>
                 <Button onClick={this.updateDescription}>Save</Button>
                 <Button
@@ -69,16 +77,17 @@ class AboutUs extends React.Component {
                   <Form.Group controlId="editDescription">
                     <Form.Control
                       as="textarea"
-                      rows="5"
+                      rows="10"
                       defaultValue={this.state.description}
                     ></Form.Control>
                   </Form.Group>
                 </Form>
               </Col>
-              <Col></Col>
+              <Col md="1" />
             </Row>
           </div>
         );
+      }
       return (
         <div>
           <Row>
@@ -92,7 +101,7 @@ class AboutUs extends React.Component {
         <div>
           <Row>
             <Col md="8">
-              <p>{this.state.description}</p>
+              <p>{description}</p>
             </Col>
             <Col>{tweets}</Col>
           </Row>
@@ -101,10 +110,12 @@ class AboutUs extends React.Component {
     }
   }
 
-  updateDescription(event) {
+  updateDescription = e => {
     // send to lambdas
-    console.log(document.getElementById("editDescription").value);
-  }
+    var description = document.getElementById("editDescription").value;
+    console.log(description);
+    this.setState({ description: description, editting: false });
+  };
 }
 
 export default AboutUs;
