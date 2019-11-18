@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Row, Button } from 'react-bootstrap';
 import GoogleMapReact from 'google-map-react';
 
 class Home extends React.Component{
@@ -12,14 +13,30 @@ class Home extends React.Component{
     render(){
         return(
             <div>
-                <p>This is the Home page!</p>
-                <p>Map:</p>
-                <Map/>
+                <Row>
+                    <Col xs={1}/>
+                    <Col xs={2} xsOffset={1}>
+                        <Button >Temperature</Button>
+                        <Button >Humidity</Button>
+                        <Button >Solar Radiation</Button>
+                        <Button >Soil Moisture</Button>
+                        <Button >Leaf Wetness</Button>
+                        <Button >Rainfall</Button>
+                        <Button >Wind Speed</Button>
+                        <Button >Wind Direction</Button>
+                    </Col>
+                    <Col>
+                        <Map/>
+                    </Col>
+                    <Col xs={1}/>
+                </Row>
             </div>
         );
     }
 
 }
+
+
 
 const Test = ({ text }) => <div>{text}</div>;
 
@@ -40,7 +57,7 @@ class Map extends React.Component{
 
     render(){
         return(
-            <div style={{ height: '100vh', width: '100%' }}>
+            <div style={{ height: '75vh', width: '100%' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{
                         key: 'AIzaSyAtet06EefOdjCUF-YFsWceI6DMPUt54O4',
