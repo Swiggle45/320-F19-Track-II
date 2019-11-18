@@ -6,34 +6,83 @@ class Home extends React.Component{
     constructor(){
         super();
         this.state = {
-
+            activeVariable: "t"
         };
     }
 
     render(){
+        var hobonetswitch = 
+        <Row>
+            <Col xs={1}/>
+            <Col xs={2}>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "t "});
+                    }} 
+                block>
+                    Temperature
+                </Button>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "h" });
+                    }} 
+                block>
+                    Humidity
+                </Button>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "sr" });
+                    }} 
+                block>
+                    Solar Radiation
+                </Button>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "sm" });
+                    }} 
+                block>
+                    Soil Moisture
+                </Button>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "lw" });
+                    }} 
+                block>
+                    Leaf Wetness
+                </Button>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "r" });
+                    }} 
+                block>
+                    Rainfall
+                </Button>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "ws" });
+                    }} 
+                block>
+                    Wind Speed
+                </Button>
+                <Button 
+                    onClick={() => {
+                        this.setState({ activeVariable: "wd" });
+                    }} 
+                block>
+                    Wind Direction
+                </Button>
+            </Col>
+            <Col>
+                <Map/>
+            </Col>
+            <Col xs={1}/>
+        </Row>; 
         return(
             <div>
-                <Row>
-                    <Col xs={1}/>
-                    <Col xs={2} xsOffset={1}>
-                        <Button >Temperature</Button>
-                        <Button >Humidity</Button>
-                        <Button >Solar Radiation</Button>
-                        <Button >Soil Moisture</Button>
-                        <Button >Leaf Wetness</Button>
-                        <Button >Rainfall</Button>
-                        <Button >Wind Speed</Button>
-                        <Button >Wind Direction</Button>
-                    </Col>
-                    <Col>
-                        <Map/>
-                    </Col>
-                    <Col xs={1}/>
-                </Row>
+                {hobonetswitch}
             </div>
         );
     }
-
 }
 
 
