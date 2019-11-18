@@ -5,10 +5,11 @@ import Home from "./Components/Home";
 import AboutUs from "./Components/AboutUs";
 import Orchards from "./Components/Orchards";
 import Data from "./Components/Data";
-import Gallery from "./Components/Gallery";
+import ImageGallery from "./Components/ImageGallery";
 import Login from "./Components/Login";
 import Observations from "./Components/Observations";
 import AskAI from "./Components/AskAI";
+
 
 class App extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ class App extends React.Component {
       authToken: null
     };
   }
+
 
   render() {
     console.log(this.state.user);
@@ -96,7 +98,7 @@ class App extends React.Component {
       case "Data":
         return <Data user={this.state.user} />;
       case "Gallery":
-        return <Gallery user={this.state.user} />;
+        return <ImageGallery user={this.state.user}/>;
       case "Login":
         return <Login user={this.state.user} auth={this.auth.bind(this)} />;
       case "Observations":
