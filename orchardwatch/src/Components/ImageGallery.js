@@ -4,6 +4,7 @@ import url1 from "./low-level-images/teethness.png";
 import url2 from "./low-level-images/sans_fisher.png";
 import url3 from "./low-level-images/toopowerful.png";
 import url4 from "./low-level-images/fisherpick.png";
+import { Col, Row } from "react-bootstrap";
 
 /* const IMAGES =
 [{
@@ -64,7 +65,13 @@ class ImageGallery extends React.Component {
     return (
       <div>
         <div className="gallery">
-          <Gallery images={imageArr} />
+          <Row>
+            <Col md="2" />
+            <Col>
+              <Gallery images={imageArr} />
+            </Col>
+            <Col md="2" />
+          </Row>
         </div>
       </div>
     );
