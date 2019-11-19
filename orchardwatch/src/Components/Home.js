@@ -11,13 +11,29 @@ class Home extends React.Component {
   }
 
   render() {
-    var hobonetswitch = (
-      <Row>
-        <Col xs={1} />
-        <Col xs={2}>
+    var hobonetswitch;
+    if (this.props.user === "grower" || this.props.user === "researcher") {
+      hobonetswitch = (
+        <div>
           <Button
             onClick={() => {
-              this.setState({ activeVariable: "t " });
+              this.setState({ activeVariable: "ara" });
+            }}
+            block
+          >
+            At-Risk Areas
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "a" });
+            }}
+            block
+          >
+            Alerts
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "t" });
             }}
             block
           >
@@ -79,14 +95,92 @@ class Home extends React.Component {
           >
             Wind Direction
           </Button>
-        </Col>
-        <Col>
-          <Map />
-        </Col>
-        <Col xs={1} />
-      </Row>
+        </div>
+      );
+    } else {
+      hobonetswitch = (
+        <div>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "t" });
+            }}
+            block
+          >
+            Temperature
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "h" });
+            }}
+            block
+          >
+            Humidity
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "sr" });
+            }}
+            block
+          >
+            Solar Radiation
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "sm" });
+            }}
+            block
+          >
+            Soil Moisture
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "lw" });
+            }}
+            block
+          >
+            Leaf Wetness
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "r" });
+            }}
+            block
+          >
+            Rainfall
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "ws" });
+            }}
+            block
+          >
+            Wind Speed
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ activeVariable: "wd" });
+            }}
+            block
+          >
+            Wind Direction
+          </Button>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <Row>
+          <Col xs={0} md={1} />
+          <Col xs={4} md={2}>
+            {hobonetswitch}
+          </Col>
+          <Col>
+            <Map />
+          </Col>
+          <Col xs={0} md={1} />
+        </Row>
+      </div>
     );
-    return <div>{hobonetswitch}</div>;
   }
 }
 
