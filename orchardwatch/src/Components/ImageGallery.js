@@ -2,7 +2,8 @@ import React from 'react';
 import Gallery from 'react-grid-gallery';
 import url1 from "./low-level-images/teethness.png";
 import url2 from "./low-level-images/sans_fisher.png";
-import url3 from "./low-level-images/toopowerful.png"
+import url3 from "./low-level-images/toopowerful.png";
+import url4 from "./low-level-images/fisherpick.png";
 
 /* const IMAGES =
 [{
@@ -33,7 +34,8 @@ import url3 from "./low-level-images/toopowerful.png"
  let IMAGES = [
      url1,
      url2,
-     url3
+     url3,
+     url4
  ]
 
 class ImageGallery extends React.Component{
