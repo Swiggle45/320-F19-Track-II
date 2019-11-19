@@ -16,7 +16,7 @@ class App extends React.Component {
     super();
     this.state = {
       page: "",
-      user: "researcher",
+      user: "grower",
       authToken: null
     };
   }
