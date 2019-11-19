@@ -15,7 +15,7 @@ class App extends React.Component {
     super();
     this.state = {
       page: "",
-      user: "researcher",
+      user: "public",
       authToken: null
     };
   }
@@ -45,6 +45,29 @@ class App extends React.Component {
           </button>
           <button onClick={() => this.setState({ page: "AskAI" })}>
             Ask AI
+          </button>
+          <button
+            onClick={() => {
+              this.setState({ page: "Home", user: "public", authToken: null });
+            }}
+          >
+            Logout
+          </button>
+        </div>
+      );
+    } else if (this.state.authToken !== null) {
+      navBar = (
+        <div className="NavBar">
+          <button onClick={() => this.setState({ page: "Home" })}>Home</button>
+          <button onClick={() => this.setState({ page: "About Us" })}>
+            About Us
+          </button>
+          <button onClick={() => this.setState({ page: "Orchards" })}>
+            Orchards
+          </button>
+          <button onClick={() => this.setState({ page: "Data" })}>Data</button>
+          <button onClick={() => this.setState({ page: "Gallery" })}>
+            Gallery
           </button>
           <button
             onClick={() => {
@@ -100,7 +123,12 @@ class App extends React.Component {
       case "Orchards":
         return <Orchards user={this.state.user} />;
       case "Data":
-        return <Data user={this.state.user} />;
+        return (
+          <Data
+            user={this.state.user}
+            authorized={this.state.authToken !== null}
+          />
+        );
       case "Gallery":
         return <ImageGallery user={this.state.user} />;
       case "Login":

@@ -53,6 +53,10 @@ class Data extends React.Component {
       });
       return <tr key={index1}>{rows}</tr>;
     });
+    let downloadData = <div>Login in to download a csv file of the data.</div>;
+    if (this.props.authorized){
+        downloadData = <Button block>Download Data</Button>;
+    }
     return (
       <div>
         <Row>
@@ -65,8 +69,7 @@ class Data extends React.Component {
               <tbody>{data}</tbody>
             </Table>
             <br></br>
-            <br></br>
-            <Button block>Download Data</Button>
+            {downloadData}
           </Col>
           <Col md="2" />
         </Row>
