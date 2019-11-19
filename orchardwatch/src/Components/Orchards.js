@@ -1,5 +1,4 @@
 import React from "react";
-import "./Orchards.css";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
 class Orchards extends React.Component {
