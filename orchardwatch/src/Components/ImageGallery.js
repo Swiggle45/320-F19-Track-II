@@ -1,38 +1,19 @@
 import React from "react";
 import Gallery from "react-grid-gallery";
-import url1 from "./low-level-images/teethness.png";
+import url1 from "./low-level-images/burningtree.jpg";
 import url2 from "./low-level-images/sans_fisher.png";
 import url3 from "./low-level-images/toopowerful.png";
 import url4 from "./low-level-images/fisherpick.png";
+import url5 from "./low-level-images/apples1.jpg";
+import url6 from "./low-level-images/apple2.png";
+import url7 from "./low-level-images/apples3.jpg";
+import url8 from "./low-level-images/HOBO1.jpeg";
+import url9 from "./low-level-images/weliveinasociety.jpg";
+import url10 from "./low-level-images/placehold.jpg";
 import { Col, Row, Button } from "react-bootstrap";
 
-/* const IMAGES =
-[{
-        src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
-        thumbnail: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_n.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 174,
-        isSelected: true,
-        caption: "After Rain (Jeshu John - designerspics.com)"
-},
-{
-        src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
-        thumbnail: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_n.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 212,
-        tags: [{value: "Ocean", title: "Ocean"}, {value: "People", title: "People"}],
-        caption: "Boats (Jeshu John - designerspics.com)"
-},
 
-{
-        src: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
-        thumbnail: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_n.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 212
-}]
- */
-
-let IMAGES = [url1, url2, url3, url4];
+let IMAGES = [url1, url3, url5, url6, url7, url4, url8, url9, url10, url2];
 
 class ImageGallery extends React.Component {
   constructor() {
