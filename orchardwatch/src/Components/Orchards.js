@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Table } from "react-bootstrap";
 
 class Orchards extends React.Component {
   constructor() {
@@ -11,15 +11,33 @@ class Orchards extends React.Component {
     };
   }
 
+  // need to implement an add orchard button that takes in orchard name and access key
+  // need to implement a delete orchard button that removes an orchard from the list
   componentDidMount() {
     // fetch Orchards and their associated description from Lambdas
     var data = {
       orchards: [
-        { name: "CSO", description: "CSO. Apples. Yay!\n\n\n\nblah" },
+        {
+          name: "CSO",
+          description: "CSO. Apples. Yay!\n\n\n\nblah",
+          sensors: [
+            { name: "sensor1", active: true },
+            { name: "sensor2", active: true }
+          ]
+        },
         {
           name: "Some Other Orchard",
           description:
-            "We have apples too! Woo!\n\n\n\nblah\n\nblah\n\nblah\n\nblah"
+            "We have apples too! Woo!\n\n\n\nblah\n\nblah\n\nblah\n\nblah",
+          sensors: [
+            { name: "sensorA", active: true },
+            { name: "sensorB", active: false }
+          ]
+        },
+        {
+          name: "Amherst Apple Orchard",
+          description: "Apples Galore!",
+          sensors: []
         }
       ]
     };
@@ -65,8 +83,9 @@ class Orchards extends React.Component {
         </Row>
       </Form>
     );
+    var edit = <div></div>;
     if (this.props.user === "grower") {
-      var edit = (
+      edit = (
         <div>
           <Button
             onClick={() => {
@@ -114,18 +133,51 @@ class Orchards extends React.Component {
           </Row>
         );
       }
-      return (
-        <div>
-          {edit}
-          {orchardSelection}
-          <div>{description}</div>
-        </div>
-      );
+    }
+    let sensors = <div></div>;
+    if (this.props.user === "grower" || this.props.user === "researcher") {
+      if (this.state.orchards[this.state.selected].sensors.length === 0) {
+        sensors = <div>No active sensors.</div>;
+      } else {
+        sensors = this.state.orchards[this.state.selected].sensors.map(
+          (e, index) => {
+            let active = "No";
+            if (e.active) active = "Yes";
+            return (
+              <tr key={index}>
+                <td>{e.name}</td>
+                <td>{active}</td>
+              </tr>
+            );
+          }
+        );
+        sensors = (
+          <Row>
+            <Col sm="2" />
+            <Col>
+              <Table striped bordered hover size="sm">
+                <thead>
+                  <tr>
+                    <th>HOBO Sensor</th>
+                    <th>Active</th>
+                  </tr>
+                </thead>
+                <tbody>{sensors}</tbody>
+              </Table>
+            </Col>
+            <Col sm="2" />
+          </Row>
+        );
+      }
     }
     return (
       <div>
+        {edit}
         {orchardSelection}
         <div>{description}</div>
+        <br></br>
+        <br></br>
+        {sensors}
       </div>
     );
   }

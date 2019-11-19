@@ -158,7 +158,20 @@ class Login extends React.Component {
       // replace true with check when sending to Lambdas and wait for authToken upon successful validation or ...
       // receives boolean based on successful validation, type of user, and authToken if boolean == true
       // wrong password
-      this.props.auth("researcher", "Authorized");
+      switch (document.getElementById("LoginEmail").value) {
+        case "public@gmail.com":
+          this.props.auth("public", "Authorized");
+          break;
+        case "grower@gmail.com":
+          this.props.auth("grower", "Authorized");
+          break;
+        case "researcher@gmail.com":
+          this.props.auth("researcher", "Authorized");
+          break;
+        default:
+          this.props.auth("public", null);
+          break;
+      }
     } else {
       if (validity) {
         this.setState({
