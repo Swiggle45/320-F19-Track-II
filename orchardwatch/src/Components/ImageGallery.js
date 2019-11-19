@@ -1,5 +1,5 @@
-import React from 'react';
-import Gallery from 'react-grid-gallery';
+import React from "react";
+import Gallery from "react-grid-gallery";
 import url1 from "./low-level-images/teethness.png";
 import url2 from "./low-level-images/sans_fisher.png";
 import url3 from "./low-level-images/toopowerful.png";
@@ -31,52 +31,43 @@ import url4 from "./low-level-images/fisherpick.png";
 }]
  */
 
- let IMAGES = [
-     url1,
-     url2,
-     url3,
-     url4
- ]
+let IMAGES = [url1, url2, url3, url4];
 
-class ImageGallery extends React.Component{
+class ImageGallery extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+    this.processImages = this.processImages.bind(this);
+  }
 
-    constructor(){
-        super();
-        this.state = {
-
-        };
-        this.processImages = this.processImages.bind(this)
-    }
-
-    /*
+  /*
     Takes in an array of image URLs, processes it into a format which the library can use
     @input parameters: url, an array of image URLs (strings) that is to be processed
     @output parameters: images, an array of image objects that react-grid-gallery can use
     */
-   processImages(url){
-    let imageArr = []
-    for(let i = 0; i < url.length; i++){
-        imageArr.push({
-            src: url[i],
-            thumbnail: url[i],
-            thumbnailWidth: 500,
-            thumbnailHeight: 400
-        });
+  processImages(url) {
+    let imageArr = [];
+    for (let i = 0; i < url.length; i++) {
+      imageArr.push({
+        src: url[i],
+        thumbnail: url[i],
+        thumbnailWidth: 500,
+        thumbnailHeight: 400
+      });
     }
-    return imageArr
-   }
+    return imageArr;
+  }
 
-    render(){
-        let imageArr = []
-        imageArr = this.processImages(IMAGES)
-        return(
-            <div>
-                <div className="gallery">
-                    <Gallery images={imageArr}/>
-                </div>
-            </div>
-        );
-    }
-
+  render() {
+    let imageArr = [];
+    imageArr = this.processImages(IMAGES);
+    return (
+      <div>
+        <div className="gallery">
+          <Gallery images={imageArr} />
+        </div>
+      </div>
+    );
+  }
 }
 export default ImageGallery;

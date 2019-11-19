@@ -10,7 +10,6 @@ import Login from "./Components/Login";
 import Observations from "./Components/Observations";
 import AskAI from "./Components/AskAI";
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -20,7 +19,6 @@ class App extends React.Component {
       authToken: null
     };
   }
-
 
   render() {
     console.log(this.state.user);
@@ -48,7 +46,13 @@ class App extends React.Component {
           <button onClick={() => this.setState({ page: "AskAI" })}>
             Ask AI
           </button>
-          <button onClick={() => {this.setState({ page: "Home", user: 'public', authToken: null})}}>Logout</button>
+          <button
+            onClick={() => {
+              this.setState({ page: "Home", user: "public", authToken: null });
+            }}
+          >
+            Logout
+          </button>
         </div>
       );
     } else {
@@ -98,7 +102,7 @@ class App extends React.Component {
       case "Data":
         return <Data user={this.state.user} />;
       case "Gallery":
-        return <ImageGallery user={this.state.user}/>;
+        return <ImageGallery user={this.state.user} />;
       case "Login":
         return <Login user={this.state.user} auth={this.auth.bind(this)} />;
       case "Observations":
