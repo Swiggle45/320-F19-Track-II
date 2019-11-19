@@ -169,7 +169,11 @@ class Login extends React.Component {
           this.props.auth("researcher", "Authorized");
           break;
         default:
-          this.props.auth("public", null);
+          this.setState({
+            alert: { bool: true, message: "Wrong Email or Password" }
+          });
+          e.preventDefault();
+          e.stopPropagation();
           break;
       }
     } else {
