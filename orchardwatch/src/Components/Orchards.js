@@ -11,6 +11,8 @@ class Orchards extends React.Component {
     };
   }
 
+  // need to implement an add orchard button that takes in orchard name and access key
+  // need to implement a delete orchard button that removes an orchard from the list
   componentDidMount() {
     // fetch Orchards and their associated description from Lambdas
     var data = {
@@ -139,8 +141,6 @@ class Orchards extends React.Component {
       } else {
         sensors = this.state.orchards[this.state.selected].sensors.map(
           (e, index) => {
-            console.log(e.name);
-            console.log(e.active);
             let active = "No";
             if (e.active) active = "Yes";
             return (

@@ -13,9 +13,32 @@ class Observations extends React.Component {
   constructor() {
     super();
     this.state = {
+      observations: [],
       postObservations: true,
       alert: false
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      observations: [
+        {
+          title: "Some Observation",
+          description: "Some Description",
+          orchard: "Cold Spring Orchards"
+        },
+        {
+          title: "Another Observation",
+          description: "Another Description",
+          orchard: "Cold Spring Orchards"
+        },
+        {
+          title: "Yet Another Observation",
+          description: "Yet Another Description",
+          orchard: "Cold Spring Orchards"
+        }
+      ]
+    });
   }
 
   render() {
@@ -74,22 +97,12 @@ class Observations extends React.Component {
       </div>
     );
     if (!this.state.postObservations) {
-      let exObservation = {
-        observations: [
-          { title: "Some Observation", description: "Some Description" },
-          { title: "Another Observation", description: "Another Description" },
-          {
-            title: "Yet Another Observation",
-            description: "Yet Another Description"
-          }
-        ]
-      };
-      let list = exObservation.observations.map((e, index) => {
+      let list = this.state.observations.map((e, index) => {
         return (
           <Card key={index}>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey={index}>
-                {e.title}
+                {e.orchard} - {e.title}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey={index}>
