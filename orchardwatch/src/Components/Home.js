@@ -14,7 +14,8 @@ class Home extends React.Component{
         var hobonetswitch = 
         <Row>
             <Col xs={1}/>
-            <Col xs={2}>
+            <Col xs={2}> 
+            <div>
                 <Button 
                     onClick={() => {
                         this.setState({ activeVariable: "t "});
@@ -71,6 +72,7 @@ class Home extends React.Component{
                 block>
                     Wind Direction
                 </Button>
+                </div>
             </Col>
             <Col>
                 <Map/>
