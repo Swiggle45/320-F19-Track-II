@@ -15,7 +15,7 @@ class AboutUs extends React.Component {
     // fetch description from Lambdas
     this.setState({
       description:
-        "OrchardWatch, defender of apples, slayer of applescab, your friendly neighborhood hero!"
+        "OrchardWatch, defender of apples, slayer of apple scab, your friendly neighborhood hero!"
     });
   }
 
@@ -36,8 +36,8 @@ class AboutUs extends React.Component {
         }}
         options={{
           username: "iamdevloper",
-          height: "400",
-          width: "200"
+          height: "500",
+          width: "250"
         }}
         onLoad={() => console.log("twitter timeline loaded!")}
       />
