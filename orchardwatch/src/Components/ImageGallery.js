@@ -1,7 +1,11 @@
 import React from 'react';
 import Gallery from 'react-grid-gallery';
+import url1 from "./low-level-images/teethness.png";
+import url2 from "./low-level-images/sans_fisher.png";
+import url3 from "./low-level-images/toopowerful.png";
+import url4 from "./low-level-images/fisherpick.png";
 
-const IMAGES =
+/* const IMAGES =
 [{
         src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
         thumbnail: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_n.jpg",
@@ -25,7 +29,14 @@ const IMAGES =
         thumbnailWidth: 320,
         thumbnailHeight: 212
 }]
+ */
 
+ let IMAGES = [
+     url1,
+     url2,
+     url3,
+     url4
+ ]
 
 class ImageGallery extends React.Component{
 
@@ -48,7 +59,7 @@ class ImageGallery extends React.Component{
         imageArr.push({
             src: url[i],
             thumbnail: url[i],
-            thumbnailWidth: 400,
+            thumbnailWidth: 500,
             thumbnailHeight: 400
         });
     }
@@ -56,10 +67,12 @@ class ImageGallery extends React.Component{
    }
 
     render(){
+        let imageArr = []
+        imageArr = this.processImages(IMAGES)
         return(
             <div>
                 <div className="gallery">
-                    <Gallery images={IMAGES}/>
+                    <Gallery images={imageArr}/>
                 </div>
             </div>
         );
